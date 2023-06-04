@@ -1,6 +1,6 @@
 function CreateTodoButton() {
   return (
-    <button>Click Here to do something cool</button>
+    <button>Click Here to do something else on WSL -btn</button>
   )
 } 
 

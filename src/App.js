@@ -4,21 +4,33 @@ import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
 import './App.css';
+import React from 'react';
+
+const defaultTodos = [
+  { text: 'hacer la primera vaina', completed: false},
+  { text: 'hacer la segunda vaina', completed: false},
+  { text: 'hacer la tercera vaina', completed: false},
+  { text: 'hacer la cuarta vaina', completed: false},
+  { text: 'hacer la la ultima vaina', completed: false},
+  { text: 'hacer la la ultima vaina', completed: false},
+];
+let idList = 0;
 
 function App() {
   return (
-    <div className="App">
-      <TodoCounter />
+    <React.Fragment>
+      <TodoCounter completed={16} total={20} />
       <TodoSearch />
       
       <TodoList>
-        <TodoItem/>
-        <TodoItem/>
-        <TodoItem/>
+        {defaultTodos.map(todo => (
+          <TodoItem key={++idList} {...todo} />
+          ))
+        }
       </TodoList>
 
       <CreateTodoButton/>
-    </div>
+    </React.Fragment>
   );
 }
 
