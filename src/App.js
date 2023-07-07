@@ -1,24 +1,34 @@
-import logo from './platzi.webp';
-import './App.css';
+import { TodoCounter } from './TodoCounter';
+import { TodoSearch } from './TodoSearch';
+import { TodoList } from './TodoList';
+import { TodoItem } from './TodoItem';
+import { CreateTodoButton } from './CreateTodoButton';
+import { ThemeProvider } from './ThemeContext';
+const defaultTodos = [
+  { text: 'hacer la primera vaina', completed: false},
+  { text: 'hacer la segunda vaina', completed: false},
+  { text: 'hacer la tercera vaina', completed: false},
+  { text: 'hacer la cuarta vaina', completed: false},
+  { text: 'hacer la la ultima vaina', completed: false},
+  { text: 'hacer la la ultima vaina', completed: false},
+];
+let idList = 0;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edita el archivo <code>src/App.js</code> y guarda para recargar.
-        </p>
-        <a
-          className="App-link"
-          href="https://platzi.com/reactjs"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <TodoCounter completed={16} total={20} />
+      <TodoSearch />
+      
+      <TodoList>
+        {defaultTodos.map(todo => (
+          <TodoItem key={++idList} {...todo} />
+          ))
+        }
+      </TodoList>
+
+      <CreateTodoButton/>
+    </ThemeProvider>
   );
 }
 
